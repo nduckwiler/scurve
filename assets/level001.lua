@@ -1,8 +1,7 @@
 local winW,winH = love.graphics.getWidth(), love.graphics.getHeight()
 
-return
--- Map (string)
-[[
+return {
+  tileString = [[
 --------------------------------
 --------------------------------
 --------------------------------
@@ -28,13 +27,10 @@ return
 #######################-----####
 ################################
 ]],
-
--- Player.x (number)
-winW * .77,
--- Player.y (number)
-winH * .85,
--- Enemies (table of tables)
-{
-  {type = "enemy", mode = "straight", x = 150, y = 25,
-                    w = 12.5, h = 12.5, control = ai.new()}
+  playerX = winW * .77,
+  playerY = winH * .85,
+  enemies = {
+      {type = "enemy", mode = "straight", x = 150, y = 25,
+                        w = 12.5, h = 12.5, control = ai.new()}
+  }
 }

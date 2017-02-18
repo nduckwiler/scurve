@@ -9,9 +9,8 @@ local rTargs = {
   {x = 400, y = 450}
 }
 
-return
--- Map (string)
-[[
+return {
+  tileString = [[
 --------------------------------
 --------------------------------
 --------------------------------
@@ -38,13 +37,14 @@ return
 ################################
 ]],
 -- Player.x (number)
-400 - plyrW/2,
+  playerX = 400 - plyrW/2,
 -- Player.y (number)
-390,
+  playerY = 390,
 -- Enemies (table of tables)
-{
-  {type = "enemy", mode = "straight", x = 50, y = 100,
-                    w = 12.5, h = 12.5, control = ai.new(lTargs)},
-  {type = "enemy", mode = "straight", x = 725, y = 100,
-                    w = 12.5, h = 12.5, control = ai.new(rTargs)},
+  enemies = {
+    {type = "enemy", mode = "straight", x = 50, y = 100,
+                      w = 12.5, h = 12.5, control = ai.new(lTargs)},
+    {type = "enemy", mode = "straight", x = 725, y = 100,
+                      w = 12.5, h = 12.5, control = ai.new(rTargs)},
+  }
 }

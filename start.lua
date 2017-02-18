@@ -6,12 +6,27 @@ _G[modname] = M           --add the table to the set of global vars
 package.loaded[modname] = M  --this makes require(...) return M
 setfenv(1,M)
 
-function load()
-  winW, winH = love.graphics.getWidth(), love.graphics.getHeight()
+-- Returns index of x in table or 1 if not found.
+-- Assumes table is a one-dimensional (non-nested), ordered array
+function find(x, table)
+  local index
+  for i,v in ipairs(table) do
+    if v == x then
+      index = i
+    end
+  end
+  return index or 1
+end
 
-  levels = {"level001", "level002", "level003","level004","level005"} --TODO search for level files using gmatch
-  selected = 1
-  switch = false
+function load(lvl, selectNext)
+  winW, winH = love.graphics.getWidth(), love.graphics.getHeight()
+  levels = {"level000", "level001", "level002", "level003","level004","level005"}
+  if selectNext then
+    selected = find(lvl, levels) + 1
+  else
+    selected = find(lvl, levels)
+  end
+  if selected > #levels then selected = 1 end
 end
 
 function update(dt)
@@ -27,13 +42,13 @@ function draw() --TODO add keyboard icon
 end
 
 function keypressed(key)
-  if key == "down" and selected < #levels then
-      selected = selected + 1
-  end
-  if key == "up" and selected > 1 then
-      selected = selected - 1
-  end
-  if key == "return" or key == "space" then
-    gameMode:load("game",levels[selected])
+  if key == "down" then
+    if selected < #levels then selected = selected + 1
+    else selected = 1 end
+  elseif key == "up" then
+    if selected > 1 then selected = selected - 1
+    else selected = #levels end
+  elseif key == "return" or key == "space" then
+    gameMode:load("quote",levels[selected])
   end
 end

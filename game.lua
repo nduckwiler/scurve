@@ -1,5 +1,7 @@
-local love, math, table, require, pairs, ipairs, loadfile, gameMode =
-  love, math, table, require, pairs, ipairs, loadfile, gameMode
+--TODO not a good idea to load the whole package table into the namespace
+
+local love, math, table, require, pairs, ipairs, loadfile, gameMode, package =
+  love, math, table, require, pairs, ipairs, loadfile, gameMode, package
 PI_OVER_TWO = math.pi/2
 
 -- Distance formula
@@ -33,11 +35,15 @@ function load(lvl)
 
   debugText = {}
   gameStatus = "play"
+  level = lvl
 
   windowW = love.graphics.getWidth()
   windowH = love.graphics.getHeight()
 
-  tileString, plyrx, plyry, enemies = loadfile("assets/"..lvl..".lua")()
+  package.loaded["assets/"..level] = nil
+  local levelInfo = require("assets/"..level)
+  tileString, plyrx, plyry, enemies =
+    levelInfo.tileString, levelInfo.playerX, levelInfo.playerY, levelInfo.enemies
 
   map_fns.loadMap(25,25,tileString)
 
@@ -174,6 +180,10 @@ function update(dt)
     end
   end
 
+  if gameStatus ~= "play" then
+    dj:squelch()
+    gameMode:load("endLvl", level, gameStatus)
+  end
 
 end
 
@@ -223,12 +233,6 @@ function draw()
     love.graphics.print(debugText)
   end
   love.graphics.setColor(255, 255, 255)
-
-  --love.graphics.print(gameStatus)
-  if gameStatus ~= "play" then
-    dj:squelch()
-    gameMode:load("endLvl",gameStatus)
-  end
 
 end
 

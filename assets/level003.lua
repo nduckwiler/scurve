@@ -20,9 +20,8 @@ local rTargs = {
   {x = 415 - enmyW, y = 250}
 }
 
-return
--- Map (string)
-[[
+return {
+  tileString = [[
 ################################
 ################################
 #####-----############-----#####
@@ -49,13 +48,14 @@ return
 ################################
 ]],
 -- Player.x (number)
-winW * .5 - plyrW / 2,
+  playerX = winW * .5 - plyrW / 2,
 -- Player.y (number)
-winH * .5 - plyrH / 2,
+  playerY = winH * .5 - plyrH / 2,
 -- Enemies (table of tables)
-{
-  {type = "enemy", mode = "straight", x = 175, y = 50,
-                    w = 12.5, h = 12.5, control = ai.new(lTargs)},
-  {type = "enemy", mode = "straight", x = 625, y = 50,
-                    w = 12.5, h = 12.5, control = ai.new(rTargs)},
+  enemies = {
+    {type = "enemy", mode = "straight", x = 175, y = 50,
+                      w = 12.5, h = 12.5, control = ai.new(lTargs)},
+    {type = "enemy", mode = "straight", x = 625, y = 50,
+                      w = 12.5, h = 12.5, control = ai.new(rTargs)},
+  }
 }

@@ -9,9 +9,9 @@ local targs = {
     {x = 700, y = 479.25}
 }
 
-return
+return {
 -- Map (string)
-[[
+  tileString = [[
 --------------------------------
 -----#-#-#-#-#-#-#-#-#-#-#------
 ----#-#-#-#-#-#-#-#-#-#-#-#-----
@@ -38,15 +38,16 @@ return
 --------------------------------
 ]],
 -- Player.x (number)
-392.5,
--- Player.y (number)
-480,
--- Enemies (table of tables)
- {
-  {type = "enemy", mode = "straight", x = 275, y = 81.25,
-                    w = 12.5, h = 12.5, control = ai.new(targs)},
-  {type = "enemy", mode = "straight", x = 400, y = 81.25,
-                    w = 12.5, h = 12.5, control = ai.new(targs)},
-  {type = "enemy", mode = "straight", x = 525, y = 81.25,
-                    w = 12.5, h = 12.5, control = ai.new(targs)}
+  playerX = 392.5,
+  -- Player.y (number)
+  playerY = 480,
+  -- Enemies (table of tables)
+  enemies = {
+    {type = "enemy", mode = "straight", x = 275, y = 81.25,
+                      w = 12.5, h = 12.5, control = ai.new(targs)},
+    {type = "enemy", mode = "straight", x = 400, y = 81.25,
+                      w = 12.5, h = 12.5, control = ai.new(targs)},
+    {type = "enemy", mode = "straight", x = 525, y = 81.25,
+                      w = 12.5, h = 12.5, control = ai.new(targs)}
+  }
 }

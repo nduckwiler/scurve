@@ -5,10 +5,11 @@ FORCED SQUARE.ttf by DrawPerfect http://www.dafont.com/paul-ijsendoorn.d2557
 --]]
 gameMode = require('gameMode') --TODO gameMode must be declared before start and game are declared
 start = require('start')
+quote = require('quote')
 game = require('game')
 endLvl = require('endLvl')
 
-gameMode.addModes{"start",start,"game",game,"endLvl",endLvl}
+gameMode.addModes{"start",start,"quote",quote,"game",game,"endLvl",endLvl}
 font = love.graphics.newFont("/assets/FORCED SQUARE.ttf", 20)
 love.graphics.setFont(font)
 

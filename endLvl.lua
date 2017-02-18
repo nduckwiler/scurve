@@ -8,12 +8,12 @@ package.loaded[modname] = M  --this makes require(...) return M
 setfenv(1,M)
 
 loseImg = love.graphics.newImage("assets/dead-square 1.2.png")
-local gS
 
-function load(gameStatus)
+function load(lvl, gameStatus)
   winW, winH = love.graphics.getWidth(), love.graphics.getHeight()
-  gS = gameStatus
-  if gS == "win" then
+  level = lvl
+  outcome = gameStatus
+  if outcome == "win" then
     msg = "you win!"
   else
     msg = "you lose..."
@@ -28,7 +28,7 @@ function draw()
   love.graphics.setColor(0, 0, 0, 100)
   love.graphics.rectangle("fill", 0, 0, winW, winH)
   love.graphics.setColor(255, 255, 255, 255)
-  if gS == "win" then
+  if outcome == "win" then
     love.graphics.setColor(255,255,255)
     love.graphics.rectangle("fill", game.player.x, game.player.y, game.player.w, game.player.h)
   else
@@ -43,6 +43,6 @@ end
 
 function keypressed(key)
   if key then
-    gameMode:load("start")
+    gameMode:load("start", level, (outcome=="win"))
   end
 end

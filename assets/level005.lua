@@ -21,9 +21,8 @@ for i = 0,23 do
     control = ai.new()
   }
 end
-return
--- Map (string)
-[[
+return {
+  tileString = [[
 --------------------------------
 --------------------------------
 --------------------------------
@@ -49,25 +48,10 @@ return
 --------------------------------
 --------------------------------
 ]],
-
 -- Player.x (number)
-plyrX,
+  playerX = plyrX,
 -- Player.y (number)
-plyrY,
+  playerY = plyrY,
 -- Enemies (table of tables)
-enemies
---[[
-{
-  {type = "enemy", mode = "straight", x = cX + r - oX, y = cY - oY - r,
-                    w = 12.5, h = 12.5, control = ai.new()},
-  {type = "enemy", mode = "straight", x = cX - oX + r, y = cY - oY + r,
-                    w = 12.5, h = 12.5, control = ai.new()},
-  {type = "enemy", mode = "straight", x = cX - oX, y = cY - oY + r/2,
-                    w = 12.5, h = 12.5, control = ai.new()},
-  {type = "enemy", mode = "straight", x = cX - oX - r, y = cY - oY + r,
-                    w = 12.5, h = 12.5, control = ai.new()},
-  {type = "enemy", mode = "straight", x = cX - oX - r, y = cY - oY - r,
-                    w = 12.5, h = 12.5, control = ai.new()},
-  {type = "enemy", mode = "straight", x = cX - oX, y = cY - oY - r,
-                    w = 12.5, h = 12.5, control = ai.new()},
-}]]
+  enemies = enemies
+}
