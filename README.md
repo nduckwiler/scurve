@@ -2,6 +2,8 @@
 
 A 2D survival game written in Lua on the LÖVE framework
 
+![screenShotStitched](https://github.com/nduckwiler/scurve/tree/master/assets/screenShotStitched.png)
+
 # Installation
 
 Playing games using LÖVE is explained on the [LÖVE wiki](https://love2d.org/wiki/Getting_Started). You can either:
