@@ -2,7 +2,7 @@
 
 A 2D survival game written in Lua on the LÖVE framework
 
-![screenShotStitched](https://raw.githubusercontent.com/nduckwiler/scurve/tree/master/assets/screenShotStitched.png)
+![screenShotStitched](https://raw.githubusercontent.com/nduckwiler/scurve/master/assets/screenShotStitched.png)
 
 # Installation
 
